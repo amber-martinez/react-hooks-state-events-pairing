@@ -1,18 +1,29 @@
+import React, { useState } from "react";
 import video from "../data/video.js";
+import Header from "./Header";
+import Comments from "./Comments";
 
 function App() {
   console.log("Here's your data:", video);
+
+  const [commentsView, setCommentsView] = useState(false);
+
+  function handleCommentsView() {
+    setCommentsView((commentsView) => !commentsView)
+  }
 
   return (
     <div className="App">
       <iframe
         width="919"
         height="525"
-        src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+        src={video.embedUrl}
         frameBorder="0"
         allowFullScreen
-        title="Thinking in React"
+        title={video.title}
       />
+      <Header handleCommentsView={handleCommentsView}/>
+      {commentsView ? null : <Comments />}
     </div>
   );
 }

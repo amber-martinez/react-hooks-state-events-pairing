@@ -10,3 +10,7 @@ body {
 .App {
   text-align: center;
 }
+
+.Header {
+  border-bottom: 1px solid black;
+}
